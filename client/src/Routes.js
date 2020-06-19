@@ -1,0 +1,39 @@
+import React from 'react';
+import {BrowserRouter , Route, Switch} from 'react-router-dom';
+import Home from './core/Home'
+import Signup from './user/Signup';
+import Signin from './user/Signin';
+import AdminRoute from './auth/helper/AdminRoutes';
+import PrivateRoute from './auth/helper/PrivateRoutes';
+import UserDashboard from './user/UserDashBoard';
+import AdminDashboard from './user/AdminDashBoard';
+import AddCategory from './admin/AddCategory';
+import { ManageCategories } from './admin/ManageCategories';
+import  CreateProduct  from './admin/AddProduct';
+import ManageProduct from './admin/ManageProducts';
+import UpdateThisProduct from './admin/UpdateProduct';
+import Cart from './core/cart';
+
+
+
+ function Routes(){
+    return (
+        <BrowserRouter>
+        <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/signup" exact component={Signup} />
+        <Route path="/signin" exact component={Signin} />
+        <Route path="/cart" exact component={Cart} />
+        <PrivateRoute path="/user/dashboard" exact component={UserDashboard} />
+        <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
+        <AdminRoute path="/admin/create/category" exact component={AddCategory} />
+        <AdminRoute path="/admin/categories" exact component={ManageCategories} />
+        <AdminRoute path="/admin/create/product" exact component={CreateProduct} />
+        <AdminRoute path="/admin/products" exact component={ManageProduct} />
+        <AdminRoute path="/admin/product/update/:productId" exact component={UpdateThisProduct} />
+        </Switch>
+        </BrowserRouter>
+        )
+}
+
+export default Routes;
